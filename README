@@ -1,0 +1,22 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=433
+
+Since writing this, I've discovered heaps about short names.  There are many caveats, but the biggest 3 are:
+1) After the first 4 similar names, windows uses a hash algorithm to work out the 3rd-6th letters of the name.
+2) Samba uses a different hash algorithm to work out the short name
+3) There is a Win32 API function call to set the short name of a file.
+
+This script contains a function that works out only simple win32 8.3 short versions of a filename.  It will
+work unless there are more than 4 files with the same name.
+
+I have since written a patch for Vim6.1 which will allow windows users acces to the short-filename via the api call... expect it soon.. (via fnamemodify and probably using the modifier :8 )
+
+NOTE: This is part of Vim 6.1 - 
+     echo fnamemodify( 'c:\vim\plugins\shortname.vim', ':8') 
+
+Eg
+echo GetWin32ShortName('c:\vim\plugins\shortname.vim')
+
+should produce:  c:\vim\plugins\shortn~1.vim
+or something like that.
+
+
